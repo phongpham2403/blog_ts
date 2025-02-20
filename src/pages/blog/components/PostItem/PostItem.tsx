@@ -1,13 +1,12 @@
-import { useDispatch } from "react-redux"
 import { Post } from "../../../../types"
-import { deletePost } from "../../blog.reducer"
 
 interface PostItemType {
   post: Post
   handleDelete: (id: string) => void
+  handleEdit: (id: string) => void
 }
 
-export default function PostItem({post, handleDelete}: PostItemType) {
+export default function PostItem({post, handleDelete, handleEdit}: PostItemType) {
   
   return (
     <div className='flex flex-col items-center overflow-hidden rounded-lg border md:flex-row'>
@@ -26,6 +25,7 @@ export default function PostItem({post, handleDelete}: PostItemType) {
         <div>
           <div className='inline-flex rounded-md shadow-sm' role='group'>
             <button
+             onClick={() => handleEdit(post.id)}
               type='button'
               className='rounded-l-lg border border-gray-200 bg-white py-2 px-4 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:text-blue-700 focus:ring-2 focus:ring-blue-700'
             >
